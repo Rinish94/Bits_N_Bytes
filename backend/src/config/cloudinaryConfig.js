@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { config, uploader } = require("cloudinary");
-console.log(process.env.CLOUD_NAME)
+// console.log(process.env.CLOUD_NAME)
 
 const cloudinaryConfig = (req, res, next) => {
   config({
