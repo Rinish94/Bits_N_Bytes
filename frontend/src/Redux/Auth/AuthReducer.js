@@ -13,6 +13,7 @@ const initState = {
   currentUser: [],
   isError: false,
   isLoading: false,
+  token:""
 };
 
 const AuthReducer = (state = initState, { type, payload }) => {
@@ -28,7 +29,8 @@ const AuthReducer = (state = initState, { type, payload }) => {
       return {
         ...state,
         isAuth: true,
-        currentUser: payload,
+        currentUser: payload.user,
+        token: payload.token,
         isLoading: false,
         isError: false,
       };

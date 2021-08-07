@@ -57,9 +57,10 @@ const logoutUser = () => {
 const authUser = (payload) => (dispatch) => {
   dispatch(authUserRequest());
   axios
-    .get(`http://localhost:8811/user/signin`)
+    .post(`http://localhost:8811/user/signin`, payload)
     .then((res) => {
-        dispatch(authUserSuccess(res.data))
+      console.log(res.data.token);
+      dispatch(authUserSuccess(res.data));
     })
     .catch((err) => {
       dispatch(authUserFailure(err));

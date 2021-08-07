@@ -59,7 +59,11 @@ function Navbar() {
   const [openLogin, setOpenLogin] = React.useState(false);
   const [openSignUp, setOpenSignUp] = React.useState(false);
   const isAuth = useSelector((state) => state.auth.isAuth);
-  console.log(isAuth);
+  const currentUser = useSelector((state) => state.auth.currentUser);
+  const token = useSelector((state) => state.auth.token);
+  // console.log(isAuth);
+  // console.log(currentUser);
+  // console.log(token);
 
   const handleLogin = () => {
     const payload = {
