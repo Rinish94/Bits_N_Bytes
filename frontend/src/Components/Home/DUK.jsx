@@ -57,7 +57,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import styles from "./DUK.module.css";
+import styles from "./Duk.module.css";
 import ListItem from '@material-ui/core/ListItem';
 
 const useStyles = makeStyles((theme) => ({
