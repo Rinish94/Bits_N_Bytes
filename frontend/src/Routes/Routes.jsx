@@ -1,27 +1,28 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Home from "../Pages/Home/Home";
-import { PrivateRoute } from "./PrivateRoutes";
-import CreateAlbum from "../Components/Profile/CreateAlbum";
-import Artist_Profile from "../Pages/Home/Artist_Profile";
-import Guest from "../Pages/Home/Guest";
-
+import Home from "../Components/Home/Home";
+// import { PrivateRoute } from "./PrivateRoutes";
+import UploadBooks from "../Components/Profile/UploadBooks";
+import Profile from "../Components/Profile/Profile";
+import BookList from "../Components/BookList/BookList";
+import Navbar from "../Components/Navbar/Navbar";
 
 const Routes = () => {
   return (
     <div>
+      <Navbar />
       <Switch>
         <Route exact path="/">
-          <Home/>
+          <Home />
         </Route>
-        <Route exact path="/guest">
-          <Guest/>
+        <Route exact path="/BookList">
+          <BookList />
         </Route>
         <Route exact={true} path="/profile">
-          <Artist_Profile />
+          <Profile />
         </Route>
-        <Route exact={true} path="/profile/create_album">
-          <CreateAlbum/>
+        <Route exact={true} path="/profile/UploadBooks">
+          <UploadBooks />
         </Route>
       </Switch>
     </div>

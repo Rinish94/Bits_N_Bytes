@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -6,18 +6,13 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
+// import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-// import FavoriteIcon from '@material-ui/icons/Favorite';
-// import ShareIcon from '@material-ui/icons/Share';
-// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-// import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Navbar from '../../Components/Navbar/Navbar';
-import axios from 'axios'
-import { todoRequests } from './PracticeUtils'
+import Navbar from '../Navbar/Navbar';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -44,45 +39,18 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: red[500],
     },
 }));
-// const url = `http://localhost:5000/createAlbum`;
 
-export default function Guest() {
+export default function BookList() {
     const classes = useStyles();
     const [expanded, setExpanded] = useState(false);
     const [data, setData] = useState([]);
-    // const limit = 2;
-    // =&_limit=2
-    // const fetchTodos = () => {
-    //     axios
-    //         .get(url, {
-    //             params: {
-    //                 _page: page,
-    //                 _limit: 2
-    //             }
-    //         })
-    //         .then((res) => {
-    //             const data = res.data;
-    //             setData(data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-    // };
-
-    // const fetchTodos=async()=>{
-    //     const resp = await todoRequests
-    //     .get(`/createAlbum`)
-    //     .catch(console.error);
-    //     setData(resp.data)
-    // }
-
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
-    useEffect(() => {
-        // fetchTodos();
-    }, []);
+    // useEffect(() => {
+    //     // fetchTodos();
+    // }, []);
 
 
 
@@ -99,7 +67,7 @@ export default function Guest() {
                             <CardHeader
                                 avatar={
                                     <Avatar aria-label="recipe" className={classes.avatar}>
-                                        <img src={item.artist_photo} style={{ height: "40px" }} />
+                                        {/* <img src={item.artist_photo} style={{ height: "40px" }} /> */}
                                         {/* <img src={item.artist_photo} /> */}
 
                                     </Avatar>

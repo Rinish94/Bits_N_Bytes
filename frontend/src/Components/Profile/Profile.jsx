@@ -16,7 +16,7 @@ function Profile() {
     let history = useHistory()
 
     const handleClick = () => {
-        history.push("/profile/create_album");
+        history.push("/profile/UploadBooks");
         console.log("Button is click and print create album")
 
     };
