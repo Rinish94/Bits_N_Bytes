@@ -1,20 +1,16 @@
 import { Button } from "@material-ui/core";
 import React from "react";
 import { useHistory } from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 import styles from "./Home.module.css";
 import TypeWriterEffect from "react-typewriter-effect";
 import Duk from "./Duk";
 
 export default function Home_compo() {
   let history = useHistory();
-
-  const handleClick = () => {
-    history.push("/guest");
-    console.log("Button is click and print create album");
-  };
-
+  let dispatch = useDispatch()
   const handleClick1 = () => {
-    history.push("/guest");
+    history.push("/profile/UploadBooks");
     console.log("Button is click and print create album");
   };
   return (
@@ -55,15 +51,6 @@ export default function Home_compo() {
         <br />
         <br />
         <br />
-
-        {/* <Button
-          onClick={handleClick}
-          style={{ margin: "10px" }}
-          variant="contained"
-          color="primary"
-        >
-          Find Books
-        </Button> */}
       </div>
       <Duk />
     </div>

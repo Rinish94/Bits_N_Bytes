@@ -51,14 +51,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Navbar() {
   const [email, setEmail] = React.useState("");
-  const [username, setUsername] = React.useState("");
+  const [name, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   let history = useHistory();
   const classes = useStyles();
   const dispatch = useDispatch();
   const [openLogin, setOpenLogin] = React.useState(false);
   const [openSignUp, setOpenSignUp] = React.useState(false);
-  const { isAuth, currentUser } = useSelector((state) => state.auth);
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  console.log(isAuth);
 
   const handleLogin = () => {
     const payload = {
@@ -68,19 +69,16 @@ function Navbar() {
 
     dispatch(authUser(payload));
   };
-  const guestClick = () => {
-    history.push("/guest");
-    console.log("Button is click and print create album")
 
-};
+  const guestClick = () => {
+    history.push("/BookList");
+  };
 
   const handleCreateUser = () => {
     const payload = {
-      username,
+      name,
       email,
       password,
-      cars_booked: [""],
-      cars_subscribed: [""],
     };
     dispatch(createUser(payload));
   };
@@ -111,15 +109,12 @@ function Navbar() {
   return (
     <div className={styles.Navbar}>
       <div className={styles.Navbar__Logo}>
-        <div
-          style={{ cursor: "pointer" }}
-          onClick={() => history.push("/")}
-        >
-        <h3>Book Sharing App</h3>
+        <div style={{ cursor: "pointer" }} onClick={() => history.push("/")}>
+          <h3>Book Sharing App</h3>
         </div>
       </div>
       <div></div>
-     
+
       <div className={styles.Navbar__Button__Info}>
         <button onClick={guestClick}>Available Books</button>
         {!toggleLogin ? (
@@ -253,7 +248,7 @@ function Navbar() {
         ) : (
           <>
             <button onMouseOver={() => setToggleUser(!toggleUser)}>
-              {currentUser.username}
+              {/* {currentUser.username} */}
             </button>
             {toggleUser && (
               <div
@@ -285,6 +280,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-
-
