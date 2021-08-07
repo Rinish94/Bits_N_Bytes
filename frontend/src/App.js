@@ -1,11 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import { Routes } from './Routes/Routes';
+// import { Routes } from './Routes/Routes';
+import Chat from './Components/ChatApp/Chat'
 
 function App() {
   return (
     <div className="App">
-      <Routes/>
+      {/* <Routes/> */}
+      <Chat/>
     </div>
   );
 }
