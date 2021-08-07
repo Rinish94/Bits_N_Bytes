@@ -3,9 +3,9 @@ require("dotenv").config();
 // dotenv.config();
 const cloudinaryConfig = (req, res, next) => {
   config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
+    cloud_name: "dtuda4otc",
+    api_key: "936591475777725",
+    api_secret: "8uru0w4UAdkQPpepvOlv8sAeGFw",
   });
   next();
 };
