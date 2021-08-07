@@ -28,7 +28,7 @@ app.post("/upload", multerUploads, (req, res) => {
       .upload(file)
       .then((result) => {
         const image = result.url;
-        // console.log("req.body :", req.body);
+        console.log("req.body :", req.body);
         return res.status(200).json({
           messge: "Your image has been uploded successfully to cloudinary",
           data: {
