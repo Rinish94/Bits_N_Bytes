@@ -1,6 +1,6 @@
 import './App.css';
 import { Routes } from './Routes/Routes';
-import Chat from './Components/ChatApp/Chat'
+// import Chat from './Components/ChatApp/Chat'
 
 function App() {
   return (

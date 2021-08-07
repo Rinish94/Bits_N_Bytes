@@ -14,10 +14,10 @@ const initState = {
 
 
 
-export default function CreateAlbum() {
+export default function UploadBooks() {
     const [contact, setContact] = React.useState(initState)
     const [store, setStore] = React.useState([])
-    const url = `http://localhost:5000/createAlbum`;
+    const url = `http://localhost:5000/UploadBooks`;
     //   const classes = useStyles();
     let history=useHistory();
     const handleChange = (e) => {
