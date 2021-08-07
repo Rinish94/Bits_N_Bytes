@@ -69,19 +69,19 @@ export default function Guest() {
     //         });
     // };
 
-    const fetchTodos=async()=>{
-        const resp = await todoRequests
-        .get(`/createAlbum`)
-        .catch(console.error);
-        setData(resp.data)
-    }
+    // const fetchTodos=async()=>{
+    //     const resp = await todoRequests
+    //     .get(`/createAlbum`)
+    //     .catch(console.error);
+    //     setData(resp.data)
+    // }
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
     useEffect(() => {
-        fetchTodos();
+        // fetchTodos();
     }, []);
 
 

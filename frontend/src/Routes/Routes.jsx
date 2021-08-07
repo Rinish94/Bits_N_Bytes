@@ -17,12 +17,12 @@ const Routes = () => {
         <Route exact path="/guest">
           <Guest/>
         </Route>
-        <PrivateRoute exact={true} path="/profile">
+        <Route exact={true} path="/profile">
           <Artist_Profile />
-        </PrivateRoute>
-        <PrivateRoute exact={true} path="/profile/create_album">
+        </Route>
+        <Route exact={true} path="/profile/create_album">
           <CreateAlbum/>
-        </PrivateRoute>
+        </Route>
       </Switch>
     </div>
   );

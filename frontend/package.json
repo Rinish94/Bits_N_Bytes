@@ -14,7 +14,9 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-typewriter-effect": "^1.1.0",
     "redux": "^4.1.0",
+    "typewriter-effect": "^2.18.0",
     "socket.io-client": "^4.1.2",
     "web-vitals": "^1.1.2"
   },

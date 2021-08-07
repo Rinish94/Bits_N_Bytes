@@ -1,5 +1,5 @@
 import React from 'react'
-import DUK from '../../Components/Home/DUK'
+import DUK from '../../Components/Home/Duk'
 import Home_compo from '../../Components/Home/Home'
 import Navbar from '../../Components/Navbar/Navbar'
 
