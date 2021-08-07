@@ -61,7 +61,7 @@ export default function CreateAlbum() {
             artist_photo: "",
             artist_logo: ""
         })
-        alert("Album Successfully Created")
+        alert("Book Successfully Donate")
         history.push("/guest")
     }
 
@@ -77,7 +77,7 @@ export default function CreateAlbum() {
             <Navbar />
             <br /><br /><br />
             <h1>
-                Create Album
+                Donate Book
             </h1>
             <TextField type="text" value={contact.artist_name} name="artist_name" onChange={handleChange} id="filled-basic" label="Enter Name of Artist" variant="filled" /><br /><br />
             <TextField type="text" value={contact.no_of_songs} name="no_of_songs" onChange={handleChange} id="filled-basic" label="No of songs" variant="filled" /><br /><br />
@@ -85,7 +85,7 @@ export default function CreateAlbum() {
             <TextField type="text" value={contact.artist_logo} name="artist_logo" onChange={handleChange} id="filled-basic" label="logo of artist" variant="filled" /><br /><br />
 
             <Button onClick={handleAdd} variant="contained" color="primary">
-                Create Album
+                Donate Book
             </Button>
             {/* <div>
                 {store.map((item =>
