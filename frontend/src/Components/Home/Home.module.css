@@ -1,0 +1,6 @@
+.container{
+    /* background-image: url("https://m.media-amazon.com/images/G/01/AmazonMusic/2020/LandingPage/HD/0921_MassAds/US-EN_AMHD_LifeHD_MassAds_LP_AC_Slot01_1x.jpg"); */
+    background-image: linear-gradient(to right, rgba(107, 102, 102, 0), rgb(114, 169, 201));
+    height:600px;
+    width: 100%;
+}

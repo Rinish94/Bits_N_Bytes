@@ -1,0 +1,24 @@
+.container{
+    background-image: url("https://mypustak-5.s3.ap-south-1.amazonaws.com/uploads/banner/do_you_know_.png");
+    height:450px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: right;
+    margin-right: 200px;
+}
+* {
+    box-sizing: border-box;
+  }
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
