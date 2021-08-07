@@ -74,6 +74,13 @@ router.get("/type/:cat", async(req, res) => {
   res.status(200).json({data: book});
 })
 
+//Search books
+router.get("/search/:item", async(req, res) => {
+  let data = req.params.item
+  let result = await books.find({book_name: {$regex: data}}).lean().exec()
+  res.status(200).json({data: result});
+})
+
 router.post("/add", async (req, res) => {
   let book = await books.create(req.body);
   res.status(201).json({ data: book });
