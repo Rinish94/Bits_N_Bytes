@@ -39,6 +39,7 @@ app.get("/*", (req, res) =>
 );
 
 app.post("/upload", multerUploads, (req, res) => {
+  console.log(req.file)
   if (req.file) {
     const file = dataUri(req).content;
     return uploader
