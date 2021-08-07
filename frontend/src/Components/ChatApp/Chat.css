@@ -1,0 +1,36 @@
+.textbox {
+  background: #eceeee;
+  border: 1px solid #42464b;
+  border-radius: 6px;
+  margin: 15px auto 0;
+  /* margin-top: 320px; */
+  width: 26rem;
+  padding-top: 6px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+.chatData {
+    background: #eceeee;
+  border-bottom: 1px solid #a6abaf;
+  border-radius: 6px 6px 0 0;
+  box-sizing: border-box;
+  color: #727678;
+  display: block;
+  height: 18rem;
+  font: 600 14px/1 "Open Sans", sans-serif;
+  padding-top: 6px;
+  padding-bottom: 1px;
+  margin: 0px;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 #fff;
+  overflow-y: scroll;
+}
+
+.textbox button{
+    background-color: #4692ee;
+    margin: 10px auto;
+    margin-left: 15px ;
+}
+.textbox input{ 
+    width: 17rem
+}
