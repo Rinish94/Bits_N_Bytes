@@ -62,7 +62,7 @@ function Navbar() {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const token = useSelector((state) => state.auth.token);
   // console.log(isAuth);
-  // console.log(currentUser);
+  // console.log(currentUser.name);
   // console.log(token);
 
   const handleLogin = () => {
@@ -254,8 +254,7 @@ function Navbar() {
         ) : (
           <>
             <Button onMouseOver={() => setToggleUser(!toggleUser)}>
-              {/* {currentUser.username} */}
-              test
+              {currentUser.name}
             </Button>
             {toggleUser && (
               <div
