@@ -114,16 +114,18 @@ function Navbar() {
     <div className={styles.Navbar}>
       <div className={styles.Navbar__Logo}>
         <div style={{ cursor: "pointer" }} onClick={() => history.push("/")}>
-          <h3>Book Sharing App</h3>
+          <img className={styles.img} src="https://toppng.com/uploads/preview/experience-the-discussion-online-library-book-logo-11562996058ru4peza6zq.png" alt="Logo" />
         </div>
       </div>
       <div></div>
 
       <div className={styles.Navbar__Button__Info}>
-        <button onClick={guestClick}>Available Books</button>
+        <Button onClick={guestClick}>Available Books</Button>
+        {! isAuth && <Button className={styles.loginBtn} onClick={handleOpenLogin}>Login</Button>}
+
         {!toggleLogin ? (
           <>
-            <button onClick={handleOpenLogin}>Login And Signup</button>
+
             <Modal
               aria-labelledby="transition-modal-title"
               aria-describedby="transition-modal-description"
@@ -251,9 +253,10 @@ function Navbar() {
           </>
         ) : (
           <>
-            <button onMouseOver={() => setToggleUser(!toggleUser)}>
+            <Button onMouseOver={() => setToggleUser(!toggleUser)}>
               {/* {currentUser.username} */}
-            </button>
+              test
+            </Button>
             {toggleUser && (
               <div
                 className={styles.Login__DropDown}
