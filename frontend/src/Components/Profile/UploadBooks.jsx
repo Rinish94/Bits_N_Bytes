@@ -108,15 +108,15 @@ export default function UploadBooks() {
     };
     console.log(payload);
 
-    // axios
-    //   .post(url, payload)
-    //   .then(function (response) {
-    //     console.log(response);
-    //     setStore(response.data);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+    axios
+      .post(url, payload)
+      .then(function (response) {
+        console.log(response);
+        setStore(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
     setStore([...store, payload]);
     setContact({
