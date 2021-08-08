@@ -19,7 +19,7 @@ export default function MyBooks() {
   useEffect(() => {
     getAlldata();
   }, []);
-  console.log(data.data);
+  // console.log(data.data);
 
   //   function typeFilter(val) {
   //     const cat = val;
