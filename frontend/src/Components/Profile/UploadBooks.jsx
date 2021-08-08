@@ -26,7 +26,7 @@ const initState = {
   author_name: "",
   book_type: "",
   price: 0,
-  image2: "",
+  image: "",
   description: "",
   sharing_status: false,
   charity: false,
@@ -41,6 +41,7 @@ export default function UploadBooks() {
   const [contact, setContact] = React.useState(initState);
   const file = React.useRef();
   const [store, setStore] = React.useState([]);
+  const [val, setVal] = React.useState("");
   const [loading, isLoading] = React.useState(false);
   const [imgStatus, setImgStatus] = React.useState(false);
   const user = useSelector((state) => state.auth.currentUser);
@@ -69,6 +70,7 @@ export default function UploadBooks() {
         //handle success
         ImageData = response.data.data.image;
         isLoading(false);
+        setVal(response.data.data.image);
         console.log(ImageData);
       })
       .catch(function (response) {
@@ -94,13 +96,14 @@ export default function UploadBooks() {
       .catch((error) => console.log(error));
   };
 
+  console.log(val);
   const handleAdd = () => {
     const payload = {
       book_name: contact.book_name,
       author_name: contact.author_name,
       book_type: contact.book_type,
       price: contact.price,
-      image2: ImageData,
+      image: val,
       description: contact.description,
       sharing_status: contact.sharing_status,
       charity: contact.charity,
@@ -124,7 +127,7 @@ export default function UploadBooks() {
       author_name: "",
       book_type: "",
       price: 0,
-      image2: "",
+      image: "",
       description: "",
       sharing_status: false,
       charity: false,
@@ -133,7 +136,7 @@ export default function UploadBooks() {
     console.log(payload);
     alert("Book Successfully Donate");
     // history.push("/guest");
-    setImgStatus(false)
+    setImgStatus(false);
   };
 
   useEffect(() => {
@@ -144,7 +147,7 @@ export default function UploadBooks() {
     <div>
       <Navbar />
       <br />
-     
+
       <br />
       <h1>Add Book Details</h1>
       <div className="inputBox">
@@ -157,8 +160,8 @@ export default function UploadBooks() {
           label="enter name of book"
           variant="filled"
         />
-      <br />
-       
+        <br />
+
         <TextField
           type="text"
           value={contact.author_name}
@@ -178,7 +181,7 @@ export default function UploadBooks() {
           label="enter amount"
           variant="filled"
         />
-       
+
         <br />
         <TextField
           type="text"
@@ -189,7 +192,7 @@ export default function UploadBooks() {
           label="enter description"
           variant="filled"
         />
-       
+
         <br />
         <FormControl className={classes.formControl}>
           <InputLabel id="demo-simple-select-label">enter book type</InputLabel>
@@ -209,7 +212,7 @@ export default function UploadBooks() {
             <MenuItem value="thriller">Thriller</MenuItem>
           </Select>
         </FormControl>
-       
+
         <br />
         <FormControl className={classes.formControl}>
           <InputLabel id="demo-simple-select-label">
@@ -227,24 +230,29 @@ export default function UploadBooks() {
           </Select>
         </FormControl>
         <br />
-        
-       <div className="imageDataBox">
-       <input
-          type="file"
-          name="image"
-          id="file"
-          ref={file}
-          // value={file.image}
-          accept="png || jpg"
-          multiple
-          onChange={handleImageAdd}
-          placeholder="upload book image"
-        />
-        <Button onClick={handleImage}>Upload</Button>
-       </div>
+
+        <div className="imageDataBox">
+          <input
+            type="file"
+            name="image"
+            id="file"
+            ref={file}
+            // value={file.image}
+            accept="png || jpg"
+            multiple
+            onChange={handleImageAdd}
+            placeholder="upload book image"
+          />
+          <Button onClick={handleImage}>Upload</Button>
+        </div>
         <br />
-       
-        <Button disabled={loading} onClick={handleAdd} variant="contained" color="primary">
+
+        <Button
+          disabled={loading}
+          onClick={handleAdd}
+          variant="contained"
+          color="primary"
+        >
           Add Book
         </Button>
       </div>
