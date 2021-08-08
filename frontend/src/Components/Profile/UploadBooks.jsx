@@ -191,10 +191,10 @@ export default function UploadBooks() {
           onChange={handleChange}
         >
           <MenuItem value="sci-fi">Sci-Fi</MenuItem>
-          <MenuItem value="Comics">Comics</MenuItem>
+          <MenuItem value="comics">Comics</MenuItem>
           <MenuItem value="programming">Programming</MenuItem>
           <MenuItem value="religious">Religious</MenuItem>
-          <MenuItem value="education">Education</MenuItem>
+          <MenuItem value="educational">Education</MenuItem>
           <MenuItem value="romatic">Romantic</MenuItem>
           <MenuItem value="thriller">Thriller</MenuItem>
         </Select>
