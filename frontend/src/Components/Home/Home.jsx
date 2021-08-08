@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import Duk from "./Duk";
 import Process from "./Process";
 import { SimpleSlider } from "./Carousel";
+import { Footer } from "./Footer";
 
 export default function Home_compo() {
   let history = useHistory();
@@ -14,6 +15,7 @@ export default function Home_compo() {
       <SimpleSlider/>
       <Duk />
       <Process />
+      <Footer/>
     </div>
   );
 }
