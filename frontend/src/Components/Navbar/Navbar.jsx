@@ -51,14 +51,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Navbar() {
   const [email, setEmail] = React.useState("");
-  const [username, setUsername] = React.useState("");
+  const [name, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   let history = useHistory();
   const classes = useStyles();
   const dispatch = useDispatch();
   const [openLogin, setOpenLogin] = React.useState(false);
   const [openSignUp, setOpenSignUp] = React.useState(false);
-  const { isAuth, currentUser } = useSelector((state) => state.auth);
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  const currentUser = useSelector((state) => state.auth.currentUser);
+  const token = useSelector((state) => state.auth.token);
+  // console.log(isAuth);
+  // console.log(currentUser.name);
+  // console.log(token);
 
   const handleLogin = () => {
     const payload = {
@@ -68,19 +73,16 @@ function Navbar() {
 
     dispatch(authUser(payload));
   };
-  const guestClick = () => {
-    history.push("/guest");
-    console.log("Button is click and print create album")
 
-};
+  const guestClick = () => {
+    history.push("/BookList");
+  };
 
   const handleCreateUser = () => {
     const payload = {
-      username,
+      name,
       email,
       password,
-      cars_booked: [""],
-      cars_subscribed: [""],
     };
     dispatch(createUser(payload));
   };
@@ -111,20 +113,19 @@ function Navbar() {
   return (
     <div className={styles.Navbar}>
       <div className={styles.Navbar__Logo}>
-        <div
-          style={{ cursor: "pointer" }}
-          onClick={() => history.push("/")}
-        >
-        <h3>Book Sharing App</h3>
+        <div style={{ cursor: "pointer" }} onClick={() => history.push("/")}>
+          <img className={styles.img} src="https://toppng.com/uploads/preview/experience-the-discussion-online-library-book-logo-11562996058ru4peza6zq.png" alt="Logo" />
         </div>
       </div>
       <div></div>
-     
+
       <div className={styles.Navbar__Button__Info}>
-        <button onClick={guestClick}>Available Books</button>
+        <Button onClick={guestClick}>Available Books</Button>
+        {! isAuth && <Button className={styles.loginBtn} onClick={handleOpenLogin}>Login</Button>}
+
         {!toggleLogin ? (
           <>
-            <button onClick={handleOpenLogin}>Login And Signup</button>
+
             <Modal
               aria-labelledby="transition-modal-title"
               aria-describedby="transition-modal-description"
@@ -252,9 +253,9 @@ function Navbar() {
           </>
         ) : (
           <>
-            <button onMouseOver={() => setToggleUser(!toggleUser)}>
-              {currentUser.username}
-            </button>
+            <Button onMouseOver={() => setToggleUser(!toggleUser)}>
+              {currentUser.name}
+            </Button>
             {toggleUser && (
               <div
                 className={styles.Login__DropDown}
@@ -285,6 +286,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-
-

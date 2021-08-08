@@ -57,9 +57,9 @@ const Chat = () => {
   });
   return (
     <div>
-      <Button type="button" onClick={handleOpen}>
+      <button className="chatButton" type="button" onClick={handleOpen}>
         Chat
-      </Button>
+      </button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

@@ -6,6 +6,7 @@ import UploadBooks from "../Components/Profile/UploadBooks";
 import Profile from "../Components/Profile/Profile";
 import BookList from "../Components/BookList/BookList";
 import Navbar from "../Components/Navbar/Navbar";
+import MyBooks from "../Components/Profile/myBooks";
 
 const Routes = () => {
   return (
@@ -17,6 +18,9 @@ const Routes = () => {
         </Route>
         <Route exact path="/BookList">
           <BookList />
+        </Route>
+        <Route exact path="/myBooks">
+          <MyBooks />
         </Route>
         <Route exact={true} path="/profile">
           <Profile />
