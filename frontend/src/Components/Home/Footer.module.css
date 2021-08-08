@@ -1,0 +1,83 @@
+
+.container
+{
+    clear: both;
+    height: 250px;
+    width: 100%;
+    background-color: #4b4444;
+}
+.Logobox
+{
+    height: 180px;
+    width: 25%;
+    /* margin-top: 50px;
+    margin-left: 50px; */
+    float: left;
+}
+.Logobox>img{
+    margin-left: 20px;
+    margin-top: 50px;
+}
+.Logobox>p{
+    margin-left: 20px;
+    color: #cacbda;
+    font-size: 18px;
+    font-weight: 400;
+}
+.contentBox
+{
+    height: 250px;
+    width: 25%;
+    margin-top: 50px;
+    margin-left: 100px;
+    float: left;
+}
+.contentBox>p{
+    margin-top: 15px;
+    margin-left: 100px;
+    color: #cacbda;
+    font-size: 18px;
+    font-weight: 500;
+}
+.socialBox{
+    height: 250px;
+    width: 25%;
+    margin-top: 50px;
+    margin-left: 100px;
+    float: left;
+}
+.socialBox>p{
+    /* margin-top: 15px; */
+    /* margin-left: 50px; */
+    color: #cacbda;
+    font-size: 16px;
+    font-weight: 500;
+    
+}
+.socialBox>div{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.socialBox>div>img{
+    margin-left: 10px;
+    height: 35px;
+    width: 35px;
+    margin-top: 8px;
+}
+#box{
+    height: 50px;
+    width: 240px;
+    margin-left: 40px;
+    background-color: #fff;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+#box>p{
+    margin-top: 15px;
+    margin-left: 5px;
+    color: #cacbda;
+    font-size: 16px;
+    font-weight: 500;
+}
