@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./Home.module.css";
 import TypeWriterEffect from "react-typewriter-effect";
 import Duk from "./Duk";
@@ -17,7 +17,7 @@ export default function Home_compo() {
 
   return (
     <div>
-     <div className={styles.container}>
+      <div className={styles.container}>
         <div>
           <img
             alt="booksImage"
@@ -48,8 +48,10 @@ export default function Home_compo() {
           </Button>
         </div>
       </div>
-        <br /><br /><br />
-      <SimpleSlider/>
+      <br />
+      <br />
+      <br />
+      <SimpleSlider />
       <Duk />
       <Process />
     </div>

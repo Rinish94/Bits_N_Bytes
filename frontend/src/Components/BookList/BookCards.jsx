@@ -1,9 +1,12 @@
 import React from "react";
 import "./BookCards.css";
 import Chat from "../ChatApp/Chat";
+import { saveData } from "../../Utils/LocalStorage";
 const BookCards = ({ data }) => {
-  // console.log(data);
-
+  function postData(data) {
+    // console.log(data);
+    saveData("bookId", data);
+  }
   return (
     <div>
       <div className="container">
@@ -27,7 +30,7 @@ const BookCards = ({ data }) => {
           {/* <!-- 		Control --> */}
           <div className="control">
             {/* <!-- Start Button buying --> */}
-            <button className="btn">
+            <button onClick={() => postData(data._id)} className="btn">
               {/* <!-- 		the Price --> */}
               <span className="price">₹ {data?.price}</span>
               {/* <!-- 		shopping cart icon--> */}
