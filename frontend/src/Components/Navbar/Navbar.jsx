@@ -78,6 +78,10 @@ function Navbar() {
     history.push("/BookList");
   };
 
+  const cartClick = () => {
+    history.push("/cart");
+  }
+
   const handleCreateUser = () => {
     const payload = {
       name,
@@ -114,12 +118,13 @@ function Navbar() {
     <div className={styles.Navbar}>
       <div className={styles.Navbar__Logo}>
         <div style={{ cursor: "pointer" }} onClick={() => history.push("/")}>
-          <img className={styles.img} src="https://toppng.com/uploads/preview/experience-the-discussion-online-library-book-logo-11562996058ru4peza6zq.png" alt="Logo" />
+          <img className={styles.img} src="https://mypustak-5.s3.ap-south-1.amazonaws.com/uploads/icons/MyPustakLogo.png" alt="Logo" />
         </div>
       </div>
       <div></div>
 
       <div className={styles.Navbar__Button__Info}>
+        <Button onClick={cartClick}>Cart</Button>
         <Button onClick={guestClick}>Available Books</Button>
         {! isAuth && <Button className={styles.loginBtn} onClick={handleOpenLogin}>Login</Button>}
 

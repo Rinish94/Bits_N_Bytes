@@ -55,6 +55,18 @@ router.get("/user/:id", async(req, res) => {
   res.status(200).json({ID: id , data: selBook });
 })
 
+//get cart books
+router.post("/cart", async(req, res) => {
+  const data = req.body
+  console.log(data)
+  let cartBook = []
+  for(let i = 0; i < data.length; i++){
+    let book = await books.findOne({_id: data[i]}).lean().exec()
+    cartBook.push(book)
+  }
+  res.status(200).json({data: cartBook });
+})
+
 //filter charity
 router.get("/charity", async(req, res) => {
   let book = await books.find({charity: true}).lean().exec()
