@@ -2,10 +2,16 @@ import React from "react";
 import "./BookCards.css";
 import Chat from "../ChatApp/Chat";
 import { saveData } from "../../Utils/LocalStorage";
+import swal from "sweetalert";
 const BookCards = ({ data }) => {
-  function postData(data) {
-    // console.log(data);
+ async function postData(data) {
+    await swal({
+      title: "Added to Cart!!",
+      // text: "I will get back to you soon !",
+      icon: "success",
+    });
     saveData("bookId", data);
+    // console.log(data);
   }
   return (
     <div>

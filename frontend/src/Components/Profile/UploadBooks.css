@@ -1,0 +1,19 @@
+.inputBox{
+    display: grid;
+    /* justify-content: space-evenly; */
+    border: 2px solid black;
+    height:38rem;
+    width: 30rem;
+    margin: 10px auto;
+    padding: 2%;
+    box-shadow: 1px 0px 0px 1px ;
+    border-radius:10px ;
+}
+.imageDataBox{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1%;
+}
+.imageDataBox button{
+    top:-5px
+}

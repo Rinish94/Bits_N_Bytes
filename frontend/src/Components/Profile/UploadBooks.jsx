@@ -8,9 +8,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
-import {useSelector} from "react-redux"
+import { useSelector } from "react-redux";
+// import { BeatLoader } from "react-spinners";
+import("./UploadBooks.css");
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -25,7 +26,7 @@ const initState = {
   author_name: "",
   book_type: "",
   price: 0,
-  image: "",
+  image2: "",
   description: "",
   sharing_status: false,
   charity: false,
@@ -38,37 +39,44 @@ const initState = {
 export default function UploadBooks() {
   const classes = useStyles();
   const [contact, setContact] = React.useState(initState);
-  // const [file, setFile] = React.useState(imageInitstate);
+  const file = React.useRef();
   const [store, setStore] = React.useState([]);
-  const user = useSelector((state)=>state.auth.currentUser)
-  console.log(user._id)
+  const [loading, isLoading] = React.useState(false);
+  const [imgStatus, setImgStatus] = React.useState(false);
+  const user = useSelector((state) => state.auth.currentUser);
+  // console.log(user._id);
   const url = `http://localhost:8811/book/add`;
   let history = useHistory();
-  // const handleImageAdd = (e) => {
-  //   const { name, value } = e.target;
-  //   setFile({ ...file, [name]: value });
-  //   // console.log(file)
-  // };
+  const handleImageAdd = (e) => {
+    // const { name, value } = e.target;
+    // ({ file, [name]: e.target.files[0] });
+    setImgStatus(true);
+    console.log(file.current.files[0]);
+  };
+  var ImageData = "";
+  const handleImage = async () => {
+    isLoading(true);
+    var bodyFormData = new FormData();
+    bodyFormData.append("image", file.current.files[0]);
+    axios
+      .post("http://localhost:8811/upload", bodyFormData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
 
-  // const handleImage = async () => {
-  //   console.log(file);
-  //   var bodyFormData = new FormData();
-  //   bodyFormData.append('image', file.image)
-  //   axios({
-  //     method: "post",
-  //     url: "http://localhost:8811/upload",
-  //     data: bodyFormData,
-  //     headers: { "Content-Type": "multipart/form-data" },
-  //   })
-  //     .then(function (response) {
-  //       //handle success
-  //       console.log(response);
-  //     })
-  //     .catch(function (response) {
-  //       //handle error
-  //       console.log(response);
-  //     });
-  // };
+      .then(function (response) {
+        //handle success
+        ImageData = response.data.data.image;
+        isLoading(false);
+        console.log(ImageData);
+      })
+      .catch(function (response) {
+        //handle error
+        isLoading(false);
+        console.log(response);
+      });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -92,22 +100,23 @@ export default function UploadBooks() {
       author_name: contact.author_name,
       book_type: contact.book_type,
       price: contact.price,
-      image: contact.image,
+      image2: ImageData,
       description: contact.description,
       sharing_status: contact.sharing_status,
       charity: contact.charity,
       seller_name: user._id,
     };
+    console.log(payload);
 
-    axios
-      .post(url, payload)
-      .then(function (response) {
-        console.log(response);
-        setStore(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    // axios
+    //   .post(url, payload)
+    //   .then(function (response) {
+    //     console.log(response);
+    //     setStore(response.data);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
 
     setStore([...store, payload]);
     setContact({
@@ -115,7 +124,7 @@ export default function UploadBooks() {
       author_name: "",
       book_type: "",
       price: 0,
-      image: "",
+      image2: "",
       description: "",
       sharing_status: false,
       charity: false,
@@ -123,7 +132,8 @@ export default function UploadBooks() {
     });
     console.log(payload);
     alert("Book Successfully Donate");
-    history.push("/guest");
+    // history.push("/guest");
+    setImgStatus(false)
   };
 
   useEffect(() => {
@@ -134,115 +144,110 @@ export default function UploadBooks() {
     <div>
       <Navbar />
       <br />
-      <br />
+     
       <br />
       <h1>Add Book Details</h1>
-      <TextField
-        type="text"
-        value={contact.book_name}
-        name="book_name"
-        onChange={handleChange}
-        id="filled-basic"
-        label="enter name of book"
-        variant="filled"
-      />
-      <br />
-      <br />
-      <TextField
-        type="text"
-        value={contact.author_name}
-        name="author_name"
-        onChange={handleChange}
-        id="filled-basic"
-        label="enter author name"
-        variant="filled"
-      />
-      <br />
-      <br />
-      <TextField
-        type="text"
-        value={contact.price}
-        name="price"
-        onChange={handleChange}
-        id="filled-basic"
-        label="enter amount"
-        variant="filled"
-      />
-      <br />
-      <br />
-      <TextField
-        type="text"
-        value={contact.description}
-        name="description"
-        onChange={handleChange}
-        id="filled-basic"
-        label="enter description"
-        variant="filled"
-      />
-      <br />
-      <br />
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">enter book type</InputLabel>
-        <Select
-          name="book_type"
-          label="enter book type"
-          id="demo-simple-select"
-          value={contact.book_type}
+      <div className="inputBox">
+        <TextField
+          type="text"
+          value={contact.book_name}
+          name="book_name"
           onChange={handleChange}
-        >
-          <MenuItem value="sci-fi">Sci-Fi</MenuItem>
-          <MenuItem value="comics">Comics</MenuItem>
-          <MenuItem value="programming">Programming</MenuItem>
-          <MenuItem value="religious">Religious</MenuItem>
-          <MenuItem value="educational">Education</MenuItem>
-          <MenuItem value="romatic">Romantic</MenuItem>
-          <MenuItem value="thriller">Thriller</MenuItem>
-        </Select>
-      </FormControl>
+          id="filled-basic"
+          label="enter name of book"
+          variant="filled"
+        />
       <br />
-      <br />
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">
-          enter sharing type
-        </InputLabel>
-        <Select
-          name="charity"
-          label="enter sharing type"
-          id="demo-simple-select"
-          value={contact.charity}
+       
+        <TextField
+          type="text"
+          value={contact.author_name}
+          name="author_name"
           onChange={handleChange}
-        >
-          <MenuItem value={true}>Charity</MenuItem>
-          <MenuItem value={true}>Pre-owned</MenuItem>
-        </Select>
-      </FormControl>
-      <br />
-      <br />
-      {/* <input
-        type="file"
-        name="image"
-        id="file"
-        value={file.image}
-        accept="png || jpg"
-        multiple
-        onChange={handleImageAdd}
-        placeholder="upload book image"
-      />
-      <button onClick={handleImage}>Upload</button> */}
-      <br />
-      <br />
-      <Button onClick={handleAdd} variant="contained" color="primary">
-        Add Book
-      </Button>
-      {/* <div>
-                {store.map((item =>
-                    <div>
-                        {`${item.name}`}
-                        {`${item.email}`}
-                        {`${item.phone}`}
-                    </div>
-                ))}
-            </div> */}
+          id="filled-basic"
+          label="enter author name"
+          variant="filled"
+        />
+        <br />
+        <TextField
+          type="text"
+          value={contact.price}
+          name="price"
+          onChange={handleChange}
+          id="filled-basic"
+          label="enter amount"
+          variant="filled"
+        />
+       
+        <br />
+        <TextField
+          type="text"
+          value={contact.description}
+          name="description"
+          onChange={handleChange}
+          id="filled-basic"
+          label="enter description"
+          variant="filled"
+        />
+       
+        <br />
+        <FormControl className={classes.formControl}>
+          <InputLabel id="demo-simple-select-label">enter book type</InputLabel>
+          <Select
+            name="book_type"
+            label="enter book type"
+            id="demo-simple-select"
+            value={contact.book_type}
+            onChange={handleChange}
+          >
+            <MenuItem value="sci-fi">Sci-Fi</MenuItem>
+            <MenuItem value="comics">Comics</MenuItem>
+            <MenuItem value="programming">Programming</MenuItem>
+            <MenuItem value="religious">Religious</MenuItem>
+            <MenuItem value="educational">Education</MenuItem>
+            <MenuItem value="romatic">Romantic</MenuItem>
+            <MenuItem value="thriller">Thriller</MenuItem>
+          </Select>
+        </FormControl>
+       
+        <br />
+        <FormControl className={classes.formControl}>
+          <InputLabel id="demo-simple-select-label">
+            enter sharing type
+          </InputLabel>
+          <Select
+            name="charity"
+            label="enter sharing type"
+            id="demo-simple-select"
+            value={contact.charity}
+            onChange={handleChange}
+          >
+            <MenuItem value={true}>Charity</MenuItem>
+            <MenuItem value={true}>Pre-owned</MenuItem>
+          </Select>
+        </FormControl>
+        <br />
+        
+       <div className="imageDataBox">
+       <input
+          type="file"
+          name="image"
+          id="file"
+          ref={file}
+          // value={file.image}
+          accept="png || jpg"
+          multiple
+          onChange={handleImageAdd}
+          placeholder="upload book image"
+        />
+        <Button onClick={handleImage}>Upload</Button>
+       </div>
+        <br />
+       
+        <Button disabled={loading} onClick={handleAdd} variant="contained" color="primary">
+          Add Book
+        </Button>
+      </div>
     </div>
   );
 }

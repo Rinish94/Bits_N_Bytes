@@ -16,11 +16,11 @@ const io = require("socket.io")(server, {
   },
 });
 io.on("connection", (socket) => {
-  console.log("What is socket: ", socket);
-  console.log("Socket is active to be connected");
+  // console.log("What is socket: ", socket);
+  // console.log("Socket is active to be connected");
 
   socket.on("chat", (payload) => {
-    console.log("What is payload", payload);
+    // console.log("What is payload", payload);
     io.emit("chat", payload);
   });
 });
@@ -46,7 +46,7 @@ app.post("/upload", multerUploads, (req, res) => {
       .upload(file)
       .then((result) => {
         const image = result.url;
-        // console.log("req.body :", req.body);
+        console.log("req.body :", req.body);
         return res.status(200).json({
           messge: "Your image has been uploded successfully to cloudinary",
           data: {

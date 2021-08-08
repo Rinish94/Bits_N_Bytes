@@ -7,7 +7,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import "./Chat.css";
 import { Button, TextField } from "@material-ui/core";
-
+import { useSelector, useDispatch } from "react-redux";
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
@@ -35,6 +35,7 @@ const Chat = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState([]);
+  // const user = useSelector((state) => state.auth.currentUser);
 
   const handleOpen = () => {
     setOpen(true);

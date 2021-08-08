@@ -42,7 +42,6 @@ export default function Home_compo() {
             onClick={handleClick1}
             style={{ margin: "10px" }}
             variant="contained"
-            color="primary"
           >
             Share Books
           </Button>
