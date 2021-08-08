@@ -1,14 +1,14 @@
 import { Button } from "@material-ui/core";
 import React from "react";
 import { useHistory } from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./Home.module.css";
 import TypeWriterEffect from "react-typewriter-effect";
 import Duk from "./Duk";
 
 export default function Home_compo() {
   let history = useHistory();
-  let dispatch = useDispatch()
+  let dispatch = useDispatch();
   const handleClick1 = () => {
     history.push("/profile/UploadBooks");
     console.log("Button is click and print create album");
