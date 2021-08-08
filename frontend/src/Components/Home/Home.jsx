@@ -7,7 +7,6 @@ import Duk from "./Duk";
 import Process from "./Process";
 import { Button } from "@material-ui/core";
 import { SimpleSlider } from "./Carousel";
-import { Footer } from "./Footer";
 
 export default function Home_compo() {
   let history = useHistory();
@@ -54,7 +53,6 @@ export default function Home_compo() {
       <SimpleSlider />
       <Duk />
       <Process />
-      <Footer/>
     </div>
   );
 }
