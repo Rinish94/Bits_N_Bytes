@@ -22,10 +22,10 @@ export default function Duk() {
     return (
         <div className={classes.root}>
             <h1>Did You Know?</h1>
-            <Grid container spacing={3}>
+            <Grid container spacing={0}>
 
                 <Grid item xs={12} sm={6}>
-                    <Paper className={classes.paper}>
+                    <Paper elevation={0} className={classes.paper}>
                         <div style={{fontSize:"30px",padding:"20px"}}>
                             <ListItem>
                                 By donating (30 books), you will help to reduce 85kg of carbon footprint
@@ -43,7 +43,7 @@ export default function Duk() {
                     </Paper>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <Paper className={classes.paper}>
+                    <Paper elevation={0} className={classes.paper}>
                         <div className={styles.container}></div>
 
                     </Paper>
